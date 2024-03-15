@@ -3,13 +3,19 @@ var drumbButtons = document.querySelectorAll(".drum");
 drumbButtons.forEach(addListenerToButton);
 
 function addListenerToButton (button) {
-    button.addEventListener("click", handleClick);
-
+    button.addEventListener("click", function () {
+    makeSound(this.innerHTML);
+       
+    });
 }
 
-function handleClick() {
-    
-    switch (this.innerHTML) {
+addEventListener("keydown", function() {
+    makeSound(event.key);
+});
+
+
+function makeSound(key) {
+    switch (key) {
         case "w":
             new Audio("./sounds/crash.mp3").play();
             break;
@@ -39,7 +45,7 @@ function handleClick() {
             break;
 
         default:
-            new Audio("./sounds/crash.mp3").play();
+            console.log(key + " was pressed");
             break;
     }
 }
