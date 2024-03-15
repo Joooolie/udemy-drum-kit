@@ -9,7 +9,7 @@ function addListenerToButton (button) {
     });
 }
 
-addEventListener("keydown", function() {
+addEventListener("keydown", function(event) {
     makeSound(event.key);
 });
 
