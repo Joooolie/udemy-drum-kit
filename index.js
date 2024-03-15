@@ -5,12 +5,13 @@ drumbButtons.forEach(addListenerToButton);
 function addListenerToButton (button) {
     button.addEventListener("click", function () {
     makeSound(this.innerHTML);
-       
+    buttonAnimation(this.innerHTML);
     });
 }
 
 addEventListener("keydown", function(event) {
     makeSound(event.key);
+    buttonAnimation(event.key);
 });
 
 
@@ -48,4 +49,12 @@ function makeSound(key) {
             console.log(key + " was pressed");
             break;
     }
+}
+
+function buttonAnimation (currentKey) {
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function() {
+        activeButton.classList.remove("pressed");
+    }, 100);
 }
